@@ -19,8 +19,10 @@
 <header>
   <div class="status-badge">Aday Mühendis & Teknoloji Tutkunu</div>
   <h1>Merhaba, ben <span class="highlight">Ersin</span></h1>
-  <p>Bilgisayar ve Harita Mühendisliği disiplinlerini yazılımın gücüyle birleştiriyorum.
-    Şu an Java ekosisteminde derinleşiyor ve mekânsal veri sistemleri üzerine projeler geliştiriyorum.</p>
+  <p style="font-size: 1.5rem; color: var(--text-secondary); min-height: 2.2rem;">
+    Ben bir <span id="typewriter" class="highlight"></span>
+  </p>
+
   <div class="social-links">
     <a href="https://www.linkedin.com/in/mehmet-ersin-cerit/" target="_blank" class="btn-social highlight-btn">LinkedIn</a>
     <a href="https://github.com/ersincrt" target="_blank" class="btn-social highlight-btn">GitHub</a>
@@ -28,39 +30,40 @@
   </div>
 </header>
 
-<section id="hakkimda">
+<section id="hakkimda" class="reveal">
   <div class="about-container">
     <div class="about-text">
-      <h2>İki Disiplin, Tek Odak</h2>
-      <p>Harita mühendisliğinin mekânsal analitiği ile bilgisayar mühendisliğinin yazılım gücünü birleştiriyorum. Java dünyasında kod yazıyor, PostgreSQL ile verileri yönetiyor ve bu süreçte modern, ölçeklenebilir çözümler üretiyorum.</p>
+      <h2>Mühendislik & Vizyon</h2>
+      <p class="lead-text">Harita mühendisliğinin hassas veri analitiğini, bilgisayar mühendisliğinin yazılım mimarisiyle harmanlıyorum.</p>
+      <p>Veriyi sadece bir sayı olarak değil, dünya üzerindeki bir konum olarak görüyorum. Java ekosisteminde ölçeklenebilir backend çözümleri üretirken, coğrafi veriyi (GIS) bu sistemlere entegre ederek fark yaratan projeler geliştiriyorum.</p>
     </div>
     <div class="skills-wrapper">
       <div class="skill-category">
-        <h4>Yazılım</h4>
+        <h4><i class="icon">💻</i> Yazılım</h4>
         <ul>
           <li>Java / Spring Boot</li>
-          <li>HTML5 & CSS3</li>
-          <li>iOS Development</li>
+          <li>HTML5 & Modern CSS</li>
+          <li>iOS (Swift)</li>
         </ul>
       </div>
       <div class="skill-category">
-        <h4>Veri & Sistem</h4>
+        <h4><i class="icon">🗺️</i> Coğrafi Veri</h4>
         <ul>
-          <li>PostgreSQL</li>
-          <li>Docker</li>
-          <li>GIS (Coğrafi Bilgi Sis.)</li>
+          <li>PostgreSQL / PostGIS</li>
+          <li>Docker & CI/CD</li>
+          <li>GIS Analizi</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<section id="projeler">
+<section id="projeler" class="reveal">
   <h2>Seçili Projeler</h2>
   <div class="grid">
     <div class="card">
-      <h3>Teknik Dokumantasyon</h3>
-      <p>Fabrika ekipmanlari icin hazirlanan bilgi portali.</p>
+      <h3>Teknik Dokümantasyon</h3>
+      <p>Fabrika ekipmanları için hazırlanan bilgi portalı.</p>
       <div class="card-tags">
         <span class="tag">HTML5</span>
         <span class="tag">CSS3</span>
@@ -70,11 +73,15 @@
     <div class="card">
       <h3>Geospatial Tracker</h3>
       <p>Harita tabanlı görev takip sistemi (Yakında).</p>
+      <div class="card-tags">
+        <span class="tag">Java</span>
+        <span class="tag">GIS</span>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="egitim">
+<section id="egitim" class="reveal">
   <h2>Eğitim & Kariyer</h2>
   <div class="timeline">
     <div class="timeline-item">
@@ -90,18 +97,52 @@
   </div>
 </section>
 
-<section id="iletişim">
+<section id="iletişim" class="reveal">
   <h2>İletişim</h2>
   <p>Şu an yeni fırsatlara ve staj imkanlarına açığım. Benimle LinkedIn üzerinden veya mail yoluyla iletişime geçebilirsiniz.</p>
   <div class="social-links" style="justify-content: flex-start; margin-top: 2rem;">
-    <a href="mailto:mecerit42@gmail.com">mecerit42@gmail.com</a>
-    <a href="https://www.linkedin.com/in/mehmet-ersin-cerit/" target="_blank">LinkedIn'de Bağlan</a>
+    <a href="mailto:mecerit42@gmail.com" class="btn-social highlight-btn">mecerit42@gmail.com</a>
+    <a href="https://www.linkedin.com/in/mehmet-ersin-cerit/" target="_blank" class="btn-social highlight-btn">LinkedIn'de Bağlan</a>
   </div>
 </section>
 
 <footer>
   <p>&copy; 2026 mecerit.com | Built with Caffeine & Java</p>
 </footer>
+
+<script>
+  // TYPEWRITER
+  const textElement = document.getElementById("typewriter");
+  const phrases = ["Bilgisayar Mühendisi.", "Harita Mühendisi.", "Java Geliştirici.", "Mekânsal Veri Uzmanı."];
+  let phraseIdx = 0, charIdx = 0, isDeleting = false;
+
+  function type() {
+    const currentPhrase = phrases[phraseIdx];
+    if (isDeleting) {
+      textElement.textContent = currentPhrase.substring(0, charIdx--);
+      if (charIdx < 0) { isDeleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; }
+    } else {
+      textElement.textContent = currentPhrase.substring(0, charIdx++);
+      if (charIdx > currentPhrase.length) { isDeleting = true; setTimeout(type, 2000); return; }
+    }
+    setTimeout(type, isDeleting ? 60 : 120);
+  }
+
+  // SCROLL REVEAL
+  function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+    for (var i = 0; i < reveals.length; i++) {
+      var windowHeight = window.innerHeight;
+      var elementTop = reveals[i].getBoundingClientRect().top;
+      if (elementTop < windowHeight - 100) {
+        reveals[i].classList.add("active");
+      }
+    }
+  }
+
+  window.addEventListener("scroll", reveal);
+  window.onload = () => { type(); reveal(); };
+</script>
 
 </body>
 </html>
