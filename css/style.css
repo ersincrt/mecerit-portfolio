@@ -1,0 +1,236 @@
+/* --- 1. FONTS & ROOT --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono&display=swap');
+
+:root {
+  --bg-color: #0f172a;
+  --card-bg: #1e293b;
+  --accent-color: #38bdf8;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+}
+
+/* --- 2. GENERAL RESET --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  padding: 0 10%;
+}
+
+/* --- 3. NAVIGATION --- */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.logo span { color: var(--accent-color); }
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: 0.3s;
+}
+
+nav a:hover { color: var(--accent-color); }
+
+/* --- 4. HEADER / HERO --- */
+header {
+  text-align: center;
+  padding: 5rem 0;
+}
+
+header h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
+}
+
+.highlight { color: var(--accent-color); font-weight: 700; }
+
+header p {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid var(--accent-color);
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+}
+
+/* --- 5. SOCIAL BUTTONS --- */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem; /* Butonlar arası boşluğu biraz açtık */
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.btn-social {
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.8rem 1.8rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-social:hover {
+  background: rgba(56, 189, 248, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(56, 189, 248, 0.2);
+  color: #fff;
+}
+
+.highlight-btn {
+  background: var(--accent-color);
+  color: var(--bg-color);
+  border: 1px solid var(--accent-color);
+}
+
+.highlight-btn:hover {
+  background: #7dd3fc; /* Daha açık mavi parlama */
+  color: var(--bg-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
+}
+
+/* --- 6. SECTIONS GENERAL --- */
+section { padding: 4rem 0; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+
+section h2 {
+  border-left: 4px solid var(--accent-color);
+  padding-left: 15px;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  color: var(--accent-color);
+}
+
+/* --- 7. CARDS & PROJECTS --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  outline: 1px solid var(--accent-color);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
+  background: rgba(30, 41, 59, 0.8);
+}
+
+.card h3 { margin-bottom: 1rem; color: var(--accent-color); }
+.card p { color: var(--text-secondary); font-size: 0.95rem; }
+
+.card-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+
+.tag {
+  font-size: 0.75rem;
+  color: var(--accent-color);
+  background: rgba(56, 189, 248, 0.1);
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+/* --- 8. ABOUT & SKILLS --- */
+.about-container { display: flex; flex-wrap: wrap; gap: 4rem; align-items: flex-start; }
+.about-text { flex: 1; min-width: 300px; }
+.skills-wrapper { flex: 1; display: flex; gap: 2rem; min-width: 300px; }
+
+.skill-category {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.5rem;
+  border-radius: 12px;
+  flex: 1;
+}
+
+.skill-category h4 {
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+  padding-bottom: 0.5rem;
+}
+
+.skill-category ul { list-style: none; }
+.skill-category li { margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem; }
+
+/* --- 9. TIMELINE --- */
+.timeline { margin-top: 2rem; border-left: 2px solid var(--card-bg); padding-left: 2rem; }
+.timeline-item { margin-bottom: 2.5rem; position: relative; }
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: calc(-2rem - 6px);
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  background: var(--accent-color);
+  border-radius: 50%;
+}
+
+.timeline-item h3 { font-size: 1.2rem; color: var(--text-primary); }
+.timeline-item span { font-size: 0.85rem; color: var(--accent-color); font-family: 'JetBrains Mono', monospace; }
+
+/* --- 10. FOOTER & MOBILE --- */
+footer {
+  text-align: center;
+  padding: 4rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  body { padding: 0 5%; }
+  header h1 { font-size: 2.5rem; }
+  nav ul { display: none; } /* Mobil menü için basit çözüm */
+}
+
+
+
