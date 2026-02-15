@@ -3,7 +3,7 @@
 
 :root {
   --bg-color: #0f172a;
-  --card-bg: rgba(30, 41, 59, 0.6); /* Cam efekti için yarı saydam */
+  --card-bg: rgba(30, 41, 59, 0.6);
   --accent-color: #38bdf8;
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
@@ -23,7 +23,7 @@ body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
   padding: 0 10%;
-  overflow-x: hidden; /* Taşmaları önler */
+  overflow-x: hidden;
 }
 
 /* Arka Plan Parıltıları */
@@ -66,14 +66,30 @@ nav {
 .logo span { color: var(--accent-color); }
 
 nav ul { display: flex; list-style: none; gap: 2rem; }
-nav a { text-decoration: none; color: var(--text-secondary); transition: 0.3s; }
+nav a { text-decoration: none; color: var(--text-secondary); transition: 0.3s; font-size: 0.9rem; }
 nav a:hover { color: var(--accent-color); }
 
-/* --- 4. HEADER / HERO & TYPEWRITER --- */
-header {
-  text-align: center;
-  padding: 8rem 0;
+.lang-switch {
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  transition: 0.3s;
+  margin-left: 20px;
 }
+
+.lang-switch:hover {
+  background: var(--accent-color);
+  color: var(--bg-color);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
+/* --- 4. HEADER / HERO --- */
+header { text-align: center; padding: 8rem 0; }
 
 header h1 {
   font-size: 3.5rem;
@@ -88,6 +104,18 @@ header h1 {
   animation: blink 0.7s infinite;
 }
 @keyframes blink { 50% { opacity: 0; } }
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid var(--accent-color);
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 1.5rem;
+  color: var(--accent-color);
+}
 
 /* --- 5. SOCIAL BUTTONS --- */
 .social-links {
@@ -121,11 +149,8 @@ header h1 {
   box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
 }
 
-/* --- 6. SECTIONS & REVEAL ANIMATION --- */
-section {
-  padding: 6rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
+/* --- 6. SECTIONS & REVEAL --- */
+section { padding: 6rem 0; border-top: 1px solid rgba(255, 255, 255, 0.05); }
 
 .reveal {
   opacity: 0;
@@ -146,65 +171,7 @@ section h2 {
   color: var(--accent-color);
 }
 
-/* --- 7. CARDS (GLASSMORPHISM) --- */
-.card, .skill-category {
-  background: var(--card-bg);
-  backdrop-filter: blur(10px); /* Buzlu cam etkisi */
-  -webkit-backdrop-filter: blur(10px);
-  padding: 2rem;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  border-color: var(--accent-color);
-  box-shadow: 0 15px 35px rgba(56, 189, 248, 0.15);
-  background: rgba(30, 41, 59, 0.8);
-}
-
-.tag {
-  font-size: 0.75rem;
-  color: var(--accent-color);
-  background: rgba(56, 189, 248, 0.1);
-  padding: 3px 10px;
-  border-radius: 4px;
-  font-family: 'JetBrains Mono', monospace;
-  border: 1px solid rgba(56, 189, 248, 0.2);
-}
-
-/* --- 8. TIMELINE --- */
-.timeline { margin-top: 2rem; border-left: 2px solid var(--card-bg); padding-left: 2rem; }
-.timeline-item { margin-bottom: 2.5rem; position: relative; }
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: calc(-2rem - 6px);
-  top: 5px;
-  width: 10px;
-  height: 10px;
-  background: var(--accent-color);
-  border-radius: 50%;
-}
-
-/* --- 9. FOOTER --- */
-footer {
-  text-align: center;
-  padding: 4rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  color: var(--text-secondary);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8rem;
-}
-
-@media (max-width: 768px) {
-  body { padding: 0 5%; }
-  header h1 { font-size: 2.5rem; }
-  nav ul { display: none; }
-}
-
-/* Hakkımda Metin Stilleri */
+/* --- 7. ABOUT SECTION --- */
 .about-text h2 {
   font-size: 2.8rem;
   background: linear-gradient(90deg, var(--accent-color), #fff);
@@ -222,25 +189,65 @@ footer {
   padding-left: 1rem;
 }
 
-.about-text p {
+.about-text p { color: var(--text-secondary); max-width: 600px; margin-bottom: 1rem; }
+
+/* --- 8. CARDS & SKILLS --- */
+.card, .skill-category {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-color);
+  box-shadow: 0 15px 35px rgba(56, 189, 248, 0.15);
+}
+
+.tag {
+  font-size: 0.75rem;
+  color: var(--accent-color);
+  background: rgba(56, 189, 248, 0.1);
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.icon { font-style: normal; margin-right: 10px; filter: drop-shadow(0 0 5px var(--accent-color)); }
+
+/* --- 9. TIMELINE --- */
+.timeline { border-left: 2px solid var(--card-bg); padding-left: 2rem; }
+.timeline-item { margin-bottom: 2.5rem; position: relative; }
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: calc(-2rem - 6px);
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  background: var(--accent-color);
+  border-radius: 50%;
+}
+
+/* --- 10. FOOTER --- */
+footer {
+  text-align: center;
+  padding: 4rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
   color: var(--text-secondary);
-  max-width: 600px;
-  margin-bottom: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
 }
 
-/* Yetenek Kartlarına İkon Dokunuşu */
-.icon {
-  font-style: normal;
-  margin-right: 10px;
-  filter: drop-shadow(0 0 5px var(--accent-color));
+@media (max-width: 768px) {
+  body { padding: 0 5%; }
+  header h1 { font-size: 2.5rem; }
+  nav ul { display: none; }
 }
-
-.skill-category h4 {
-  display: flex;
-  align-items: center;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-}
-
 
 
