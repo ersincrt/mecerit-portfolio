@@ -175,7 +175,8 @@ nav.scrolled{
   backdrop-filter:blur(18px) saturate(150%);
   border-bottom:1px solid var(--border);
 }
-.logo{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-0.02em;display:flex;align-items:center;gap:2px}
+.logo{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-0.02em;display:flex;align-items:center;gap:2px;color:var(--text);text-decoration:none;cursor:pointer;transition:opacity 0.25s var(--ease)}
+.logo:hover{opacity:0.7}
 .logo .dot{color:var(--amber);font-size:26px;line-height:0}
 .nav-links{display:flex;gap:6px;align-items:center}
 .nav-links a{
@@ -256,7 +257,7 @@ body.menu-open{overflow:hidden}
   animation:corepulse 4s var(--ease) infinite alternate;
 }
 @keyframes corepulse{to{box-shadow:0 0 92px 2px rgba(245,166,35,0.92),inset 0 -10px 30px rgba(0,0,0,0.25)}}
-.orbit-core .mc{font-family:var(--display);font-weight:700;font-size:46px;color:#1a0f00;letter-spacing:-0.02em}
+.orbit-core .mc{font-family:var(--display);font-weight:700;font-size:40px;color:#1a0f00;letter-spacing:-0.03em}
 .orbit-core::after{content:"";position:absolute;inset:-12px;border-radius:50%;border:1.5px dashed rgba(245,166,35,0.45);animation:rot 16s linear infinite}
 .orbit-ring{position:absolute;top:50%;left:50%;border-radius:50%;pointer-events:none}
 .orbit-ring.o1{width:250px;height:250px;margin:-125px 0 0 -125px;border:1px solid rgba(245,166,35,0.14);animation:rot 26s linear infinite}
@@ -800,7 +801,7 @@ a:focus-visible,button:focus-visible,.contact-link:focus-visible,.lang-toggle bu
 
 <!-- NAV -->
 <nav id="nav">
-  <div class="logo">MEC</div>
+  <a href="#top" class="logo" id="logoHome" aria-label="Ana sayfa">MEC</a>
   <div class="nav-links">
     <a href="#about" data-i18n="nav_about">Hakkımda</a>
     <a href="#path" data-i18n="nav_path">Yolculuk</a>
@@ -882,7 +883,7 @@ a:focus-visible,button:focus-visible,.contact-link:focus-visible,.lang-toggle bu
     <!-- HERO VISUAL: TECH ORBIT -->
     <div class="hero-visual">
       <div class="orbit-sys">
-        <div class="orbit-core"><span class="mc">MC</span></div>
+        <div class="orbit-core"><span class="mc">MEC</span></div>
         <div class="orbit-ring o1">
           <div class="orbit-badge" style="--a:0deg"><span class="pill"><i></i>Java</span></div>
           <div class="orbit-badge" style="--a:120deg"><span class="pill"><i></i>Spring</span></div>
@@ -1877,6 +1878,19 @@ if(isFine){
       r.addEventListener('animationend',()=>r.remove());
     }
   },{passive:true});
+})();
+
+/* ════════════════════════════════════════════════════════
+   LOGO → scroll to top
+════════════════════════════════════════════════════════ */
+(function(){
+  const logo=document.getElementById('logoHome');
+  if(!logo) return;
+  logo.addEventListener('click',(e)=>{
+    e.preventDefault();
+    window.scrollTo({top:0,behavior:'smooth'});
+    history.replaceState(null,'',location.pathname+location.search);
+  });
 })();
 
 /* ════════════════════════════════════════════════════════
